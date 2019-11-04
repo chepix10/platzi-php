@@ -1,5 +1,29 @@
 <?php
-require_once 'app/Models/jobs.php';
+
+require_once 'vendor/autoload.php';
+
+use Illuminate\Database\Capsule\Manager as Capsule;
+
+$capsule = new Capsule;
+
+$capsule->addConnection([
+    'driver'    => 'mysql',
+    'host'      => 'localhost',
+    'database'  => 'cursophp',
+    'username'  => 'root',
+    'password'  => '',
+    'charset'   => 'utf8',
+    'collation' => 'utf8_unicode_ci',
+    'prefix'    => '',
+]);
+
+// Make this Capsule instance available globally via static methods... (optional)
+$capsule->setAsGlobal();
+
+// Setup the Eloquent ORM... (optional; unless you've used setEventDispatcher())
+$capsule->bootEloquent();
+
+require_once 'jobs.php';
 
 $name = 'José Morales';
 ?>
@@ -52,11 +76,11 @@ $name = 'José Morales';
           <ul>
             <?php
               foreach ($jobs as $job) {
-                if ($job->isVisible()) {
+                //if ($job->isVisible()) {
             ?>
               <li class="work-position">
-              <h5><?php echo $job->getTitle() ?></h5>
-              <p><?php echo $job->getDescription() ?></p>
+              <h5><?php echo $job->title ?></h5>
+              <p><?php echo $job->description ?></p>
               <strong>Achievements:</strong>
                 <ul>
                   <li>Lorem ipsum dolor sit amet, 80% consectetuer adipiscing elit.</li>
@@ -65,7 +89,7 @@ $name = 'José Morales';
                 </ul>
               </li>
             <?php
-                }
+                //}
               }
             ?>
           </ul>
