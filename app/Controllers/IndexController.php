@@ -2,10 +2,14 @@
 
 namespace App\Controllers;
 
+use App\Models\Job;
+
 class IndexController {
-    public function IndexAction() {
-        echo 'Index Action works!';
+    public function getIndexAction() {
+        $jobs = Job::all();
+        $name = 'José Morales';
+
+        include '../views/index.php';
     }
 }
-
 ?>

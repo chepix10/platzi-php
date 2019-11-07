@@ -1,9 +1,3 @@
-<?php
-
-require_once 'jobs.php';
-
-$name = 'José Morales';
-?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -53,7 +47,6 @@ $name = 'José Morales';
           <ul>
             <?php
               foreach ($jobs as $job) {
-                //if ($job->isVisible()) {
             ?>
               <li class="work-position">
               <h5><?php echo $job->title ?></h5>
@@ -66,7 +59,6 @@ $name = 'José Morales';
                 </ul>
               </li>
             <?php
-                //}
               }
             ?>
           </ul>

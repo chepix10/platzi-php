@@ -40,9 +40,16 @@ $map = $routerContainer->getMap();
 
 $map->get('index', '/cursophp/', [
     'controller' => 'App\Controllers\IndexController',
-    'action' => 'IndexAction'
+    'action' => 'getIndexAction'
 ]);
-$map->get('addJobs', '/cursophp/jobs/add', '../addJob.php');
+$map->get('addJobs', '/cursophp/jobs/add', [
+    'controller' => 'App\Controllers\JobsController',
+    'action' => 'getAddJobAction'
+]);
+$map->post('saveJobs', '/cursophp/jobs/add', [
+    'controller' => 'App\Controllers\JobsController',
+    'action' => 'postAddJobAction'
+]);
 
 $matcher = $routerContainer->getMatcher();
 $route = $matcher->match($request);
@@ -53,6 +60,6 @@ if (!$route) {
     $handlerData = $route->handler;
     $actionName = $handlerData['action'];
     $controller = new $handlerData['controller'];
-    $controller->$actionName();
+    $controller->$actionName($request);
 }
 ?>
