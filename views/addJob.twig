@@ -4,7 +4,7 @@
     <div class="alert alert-primary" role="alert">
         {{ responseMessage }}
     </div>
-    <form action="add" method="POST">
+    <form action="add" enctype="multipart/form-data" method="POST">
         <div class="row">
             <div class="col-6 form-group">
                 <label for="">Title:</label>
@@ -15,6 +15,12 @@
             <div class="col-6 form-group">
                 <label for="">Description:</label>
                 <input class="form-control" name="description" type="text"/>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-6 form-group">
+                <label for="">Logo:</label>
+                <input class="form-control" name="logo" type="file"/>
             </div>
         </div>
         <button class="btn btn-primary" type="submit">Save</button>

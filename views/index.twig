@@ -30,6 +30,9 @@
                     <h3 class="border-bottom-gray">Work Experience</h3>
                     <ul>
                         {% for job in jobs %}
+                            <div class="col-3">
+                                <img alt="" src="{{ job.filename }}"/>
+                            </div>
                             <li class="work-position">
                                 <h5>{{ job.title }}</h5>
                                 <p>{{ job.description }}</p>
