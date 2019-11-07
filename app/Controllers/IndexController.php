@@ -4,12 +4,15 @@ namespace App\Controllers;
 
 use App\Models\Job;
 
-class IndexController {
+class IndexController extends BaseController {
     public function getIndexAction() {
         $jobs = Job::all();
         $name = 'José Morales';
 
-        include '../views/index.php';
+        return $this->renderHTML('index.twig', [
+            'name' => $name,
+            'jobs' => $jobs
+        ]);
     }
 }
 ?>

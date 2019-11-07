@@ -6,7 +6,7 @@ use App\Models\Job;
 
 class JobsController extends BaseController {
     public function getAddJobAction() {
-        echo $this->renderHTML('addJob.twig');
+        return $this->renderHTML('addJob.twig');
     }
 
     public function postAddJobAction($request) {
@@ -17,7 +17,7 @@ class JobsController extends BaseController {
             $job->description = $newJob['description'];
             $job->save();
         }
-        include '../views/addJob.php';
+        return $this->renderHTML('addJob.twig');
     }
 }
 

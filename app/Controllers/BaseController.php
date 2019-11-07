@@ -4,6 +4,7 @@ namespace App\Controllers;
 
 use Twig\Loader\FilesystemLoader;
 use Twig\Environment;
+use Zend\Diactoros\Response\HtmlResponse;
 
 class BaseController {
 
@@ -18,7 +19,7 @@ class BaseController {
     }
 
     public function renderHTML($fileName, $data = []) {
-        return $this->templateEngine->render($fileName, $data);
+        return new HtmlResponse($this->templateEngine->render($fileName, $data));
     }
 }
 
